@@ -11,7 +11,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Pressable onPress={() => { router.push("/(app)/(modal)/action-sheet") }}>
+      <Pressable className="bg-red-200 dark:bg-green-400" onPress={() => { router.push("/(app)/(modal)/action-sheet") }}>
         <Text>Action Sheet</Text>
       </Pressable>
     </SafeAreaView>
