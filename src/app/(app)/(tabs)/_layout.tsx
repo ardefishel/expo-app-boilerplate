@@ -1,4 +1,7 @@
+import { Icon } from "@/components/ui/ion-icon";
+import { TabNavigationItems } from "@/config/tabs";
 import { Tabs, useSegments } from "expo-router";
+
 
 export default function RootLayout() {
   const segments = useSegments()
@@ -8,9 +11,11 @@ export default function RootLayout() {
       display: showTabs ? 'flex' : 'none'
     }
   }}>
-    <Tabs.Screen name="home" />
-    <Tabs.Screen name="page-1" />
-    <Tabs.Screen name="page-2" />
-    <Tabs.Screen name="account" />
+    {TabNavigationItems.map((item) => (
+      <Tabs.Screen name={item.name} options={({ route, navigation }) => ({
+        tabBarIcon: ({ size, color }) => (<Icon name={item.icon} size={size} color={color} />),
+        title: item.title,
+      })} />
+    ))}
   </Tabs>;
 }
